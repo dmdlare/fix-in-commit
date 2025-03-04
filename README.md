@@ -1,59 +1,96 @@
-Using "fix" in GitHub Commits
+ 
 
-When making a commit that fixes an issue, it's important to write a clear and descriptive commit message. Below are different examples of how "fix" can be used in commit messages:
+ # Different Features of Git Commit with Explanations and Examples
 
-1. Bug Fixes
+## 1. **Message Description**
+Every commit has a message that describes the changes made. Commit messages help you and your team understand the purpose of each change.
 
-fix: resolve crash when clicking on profile button
+### Example:
+```sh
+git commit -m "Refactored login feature for better performance"
+git commit -m "feat: add dark mode toggle in user settings"
+git commit -m "fix: resolve issue with form validation not triggering on submit"
+git commit -m "docs: update API usage examples in README"
+git commit -m "style: fix indentation and remove trailing spaces in main.css"
+git commit -m "refactor: rename 'userData' to 'userProfile' for better clarity"
+git commit -m "test: add unit tests for authentication middleware"
+git commit -m "chore: update eslint config to enforce new style rules"
 
-fix(login): correct wrong password validation
+## 2. **Amend Previous Commit**  
+Modify the most recent commit to fix mistakes or add missing files.
 
-fix: prevent null pointer exception in user service
-
-fix(api): handle timeout errors properly
-
-
-2. UI/UX Fixes
-
-fix(ui): align buttons properly in mobile view
-
-fix(css): make navbar responsive on smaller screens
-
-fix: dark mode colors for better contrast
-
-
-3. Code Improvements
-
-fix: remove unused variables causing warnings
-
-fix(memory-leak): properly dispose event listeners
-
-fix(performance): optimize database query execution
+### Example:
+```sh
+git commit --amend -m "Optimize search algorithm for better performance"
+git commit --amend -m "fix: update error message for better clarity"
 
 
-4. Documentation Fixes
+## 3. **Staging Partial Changes**  
+Commit only selected changes from a file.
 
-fix(docs): update installation guide with correct commands
+### Example:
+```sh
+git add -p
+git commit -m "Update footer content for improved branding"
 
-fix(readme): correct typo in project setup steps
+git add -p  
+git commit -m "fix: correct tax calculation logic in checkout process"
+
+## 4. **Sign-Off (Verified Commits)**  
+Certify your commits with a sign-off.
+
+### Example:
+```sh
+git commit -s -m "Refactored authentication module for efficiency"
+git commit -s -m "feat: add email verification step in user registration"
+git commit -s -m "fix(security): enforce strong password policies"
 
 
-Example Use Case
+## 5. **Committing with Author Identity**  
+Specify a different author for a commit.
 
-Scenario:
+### Example:
+```sh
+git commit --author="Michael Doe <michael.doe@example.com>" -m "Improve error logging"
+git commit --author="Sarah Lee <sarah.lee@example.com>" -m "fix: adjust timezone conversion in reports"
 
-You're working on a web app, and a user reports that clicking the "Submit" button multiple times sends duplicate form entries.
+## 6. **Empty Commits**  
+Create a commit without changing files, useful for triggering workflows.
 
-After debugging, you find that the issue is caused by the button not being disabled after the first click. You fix it by adding a disabled attribute to prevent multiple submissions.
+### Example:
+```sh
+git commit --allow-empty -m "Triggering CI build"
+git commit --allow-empty -m "chore(ci): force rebuild after config changes"
 
-Commit Example:
+## 7. **Squashing Commits**  
+Merge multiple commits into one for a cleaner history.
 
-fix(form): prevent duplicate submissions by disabling button
+### Example:
+```sh
+git rebase -i HEAD~3
+git rebase -i HEAD~5  # Mark unwanted commits as "squash" (s)
 
-Previously, users could submit the form multiple times by clicking the submit button repeatedly.  
-This fix disables the button on the first click and prevents duplicate entries.
+## 8. **Interactive Rebase**  
+Modify, reorder, or delete past commits.
 
-This message clearly explains:
-What was fixed
-Why it was a problem
-How it was fixed
+### Example:
+```sh
+git rebase -i HEAD~4
+git rebase -i HEAD~6
+
+## 9. **Diff Viewing Before Commit**  
+Preview changes before committing.
+
+### Example:
+```sh
+git diff --staged
+git add -p  
+git commit -m "fix: correct pricing logic in discount calculation"
+
+## 10. **GPG-Signed Commits**  
+Sign commits with a GPG key for authentication.
+
+### Example:
+```sh
+git commit -S -m "Enhance API security with rate limiting"
+git commit -s -m "feat: add webhook support for third-party integrations"
